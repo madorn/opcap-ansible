@@ -14,8 +14,16 @@ jobs:
         with:
           ref: ${{ github.ref }}
 
+      - name: Add ansible.cfg from secrets
+        run: |
+          echo ${ANSIBLE_CFG} > ${HOME}/.ansible.cfg
+        shell: bash
+        env:
+          ANSIBLE_CFG: "${{secrets.ANSIBLE_CFG}}"
+
       - name: Install galaxy colletions
-        run: ansible-galaxy install -r requirements.yml
+        run: ansible-galaxy install -vvvv -r requirements.yml
 
       - name: Run ansible-lint
         uses: ansible/ansible-lint@main
+
