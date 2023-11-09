@@ -20,7 +20,7 @@ jobs:
 
       - name: Add ansible.cfg from secrets
         run: |
-          echo $ANSIBLE_CFG > ${HOME}/.ansible.cfg
+          echo $ANSIBLE_CFG > ${HOME}/ansible.cfg
         shell: bash
         env:
           ANSIBLE_CFG: ${{secrets.ANSIBLE_CFG}}
