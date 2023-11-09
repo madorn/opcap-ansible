@@ -3,7 +3,7 @@ name: opcap-ansible ee build
 on:
   push:
     branches:
-      - exec-env
+      - main
     paths:
       - '**/execution-environment.yml'
       - '**/requirements.yml'
@@ -25,11 +25,6 @@ jobs:
         env:
           ANSIBLE_CFG: "${{ secrets.ANSIBLE_CFG }}"
 
-      - name: debug
-        run: |
-          echo $ANSIBLE_CFG
-        shell: bash
-        
       - name: Install python requirements (ansible-builder)
         run: pip install -r requirements.txt
 
@@ -56,7 +51,6 @@ jobs:
           tags: |
             latest
             ${{ github.sha }}
-          registry: quay.io/opdevvvvvvv
+          registry: quay.io/opdev
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
-
