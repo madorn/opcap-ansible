@@ -13,7 +13,7 @@ dependencies:
   galaxy: requirements.yml
 
 additional_build_files:
-   - src: /home/runner/.ansible.cfg
+   - src: /home/runner/ansible.cfg
      dest: configs
 
 additional_build_steps:
