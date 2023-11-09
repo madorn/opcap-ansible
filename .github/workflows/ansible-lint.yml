@@ -3,6 +3,8 @@ on:
   pull_request:
     branches:
       - exec-env
+  workflow_dispatch:
+
 jobs:
   build:
     name: Ansible Lint on PR
@@ -16,14 +18,13 @@ jobs:
 
       - name: Add ansible.cfg from secrets
         run: |
-          echo ${ANSIBLE_CFG} > ${HOME}/.ansible.cfg
+          echo -n ${ANSIBLE_CFG} | base64 --decode > ansible.cfg
         shell: bash
         env:
-          ANSIBLE_CFG: "${{secrets.ANSIBLE_CFG}}"
+          ANSIBLE_CFG: "${{ secrets.ANSIBLE_CFG }}"
 
       - name: Install galaxy colletions
         run: ansible-galaxy install -vvvv -r requirements.yml
 
       - name: Run ansible-lint
         uses: ansible/ansible-lint@main
-
