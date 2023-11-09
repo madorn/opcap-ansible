@@ -18,6 +18,13 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: debug
+        run: |
+          echo ${ANSIBLE_CFG}
+        shell: bash
+        env:
+          ANSIBLE_CFG: "${{ secrets.ANSIBLE_CFG }}"
+
       - name: Add ansible.cfg from secrets
         run: |
           echo -n ${ANSIBLE_CFG} | base64 --decode > ansible.cfg
