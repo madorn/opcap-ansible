@@ -1,8 +1,12 @@
 name: ansible-lint
 on:
-  pull_request:
+  push:
     branches:
       - exec-env
+    paths:
+      - '**/execution-environment.yml'
+      - '**/requirements.yml'
+      - '**/requirements.txt'
   workflow_dispatch:
 
 jobs:
