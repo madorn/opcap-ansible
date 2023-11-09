@@ -56,7 +56,7 @@ jobs:
           tags: |
             latest
             ${{ github.sha }}
-          registry: quay.io/opdev
+          registry: quay.io/opdevvvvvvv
           username: ${{ secrets.QUAY_USERNAME }}
           password: ${{ secrets.QUAY_PASSWORD }}
 
