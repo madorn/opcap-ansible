@@ -20,14 +20,14 @@ jobs:
 
       - name: Add ansible.cfg from secrets
         run: |
-          echo $ANSIBLE_CFG > ${HOME}/ansible.cfg
+          echo -n ${ANSIBLE_CFG} | base64 --decode > ansible.cfg
         shell: bash
         env:
-          ANSIBLE_CFG: ${{secrets.ANSIBLE_CFG}}
+          ANSIBLE_CFG: "${{ secrets.ANSIBLE_CFG }}"
 
       - name: debug
         run: |
-          echo ${HOME}
+          echo $ANSIBLE_CFG
         shell: bash
         
       - name: Install python requirements (ansible-builder)
