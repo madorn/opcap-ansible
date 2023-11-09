@@ -3,7 +3,7 @@ name: opcap-ansible ee build
 on:
   push:
     branches:
-      - main
+      - exec-env
     paths:
       - '**/execution-environment.yml'
       - '**/requirements.yml'
