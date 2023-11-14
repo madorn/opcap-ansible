@@ -3,7 +3,7 @@ name: opcap-ansible ee build
 on:
   push:
     branches:
-      - main
+      - fix-linter-action
     paths:
       - '**/execution-environment.yml'
       - '**/requirements.yml'
